@@ -6,10 +6,11 @@ import { Card, Form, Input, Button, Error } from "../components/AuthForms";
 
 function Signup(props) {
   const [isSignUp, setSignUp] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const referer = "/login";
 
   function postSignup() {
@@ -28,6 +29,7 @@ function Signup(props) {
       })
       .catch((e) => {
         setIsError(true);
+        setErrorMessage(e.response.data.message);
       });
   }
 
@@ -64,8 +66,10 @@ function Signup(props) {
         />
         <Button onClick={postSignup}>Sign Up</Button>
       </Form>
-      <Link to="/login">Already have an account?</Link>
-      {isError && <Error>Please Full fill</Error>}
+      <Link to="/login" style={{ marginBottom: "20px" }}>
+        Already have an account?
+      </Link>
+      {isError && <Error>{errorMessage}</Error>}
     </Card>
   );
 }

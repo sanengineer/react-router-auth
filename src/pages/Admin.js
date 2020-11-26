@@ -1,19 +1,22 @@
 import React from "react";
 import { Card, Button } from "../components/AuthForms";
-// import { useAuth } from "../context/auth";
 
-function Admin(props) {
-  // const { setAuthTokens } = useAuth();
-
-  // function logOut() {
-  //   setAuthTokens();
-  // }
-
+function Admin({ logOut }) {
   return (
     <div>
-      <div>Admin Page</div>
+      <div
+        style={{
+          margin: "20px",
+          fontSize: "30px",
+          textAlign: "center",
+          fontWeight: "bolder",
+        }}
+      >
+        <span style={{ fontSize: "100px" }}>👨🏾‍💻</span> <br />
+        Admin Page
+      </div>
       <Card>
-        <Button>Log out</Button>
+        <Button onClick={logOut}>Log out</Button>
       </Card>
     </div>
   );
